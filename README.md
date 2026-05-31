@@ -80,11 +80,35 @@ For Telugu copy, see the `translations.te` object in `script.js`.
 
 ---
 
-## 🌐 Deploying
+## 🌐 Deploying (free hosting)
 
-This site is static — host it anywhere:
+This site is fully static. Three excellent free options for public hosting:
 
-- **GitHub Pages**, **Netlify**, **Cloudflare Pages**, **Vercel**, or any traditional web host.
+### Option A · Cloudflare Pages (recommended for Indian audience)
+
+Cloudflare has edge servers in **Mumbai, Delhi, Hyderabad, Chennai, Bengaluru** — fastest for visitors in India.
+
+1. Push this repo to GitHub (`gh repo create ramalayam --public --source=. --push`).
+2. Go to <https://pages.cloudflare.com> → **Create a project** → **Connect to Git**.
+3. Select the repo. Build settings: leave **Framework preset = None**, **Build command = (empty)**, **Build output directory = /**.
+4. Click **Deploy**. You'll get `ramalayam.pages.dev` in ~30 seconds.
+
+### Option B · Netlify Drop (easiest, no GitHub)
+
+1. Go to <https://app.netlify.com/drop>.
+2. Drag the entire `Ramalayam/` folder onto the page.
+3. You get a live `*.netlify.app` URL instantly.
+4. Sign up (free) to keep it permanent.
+
+### Option C · GitHub Pages
+
+1. `gh repo create ramalayam --public --source=. --push`
+2. On GitHub: **Settings → Pages → Source = Deploy from branch → main → / (root)**.
+3. Live at `https://<your-username>.github.io/ramalayam/`.
+
+### Custom domain
+
+Once deployed, all three platforms support free custom domains. Buy a domain from **Cloudflare Registrar** (cheapest, no markup) or Namecheap, then add it in your hosting dashboard.
 
 ---
 
