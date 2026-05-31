@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sri Sita Rama Chandra Swamy Devasthanam (Ramalayam) — a sacred Hindu temple at F2PX+7XM, Ramnagar, Ongole, Andhra Pradesh." />
+    <meta name="theme-color" content="#a8330a" />
+
+    <title>Sri Ramalayam · Ramnagar, Ongole</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Tiro+Telugu&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%89%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+    <!-- ==============================================
+         INTRO OVERLAY
+         ============================================== -->
+    <div class="intro" id="intro" aria-label="Welcome to Sri Ramalayam">
+        <div class="intro__petals" id="introPetals" aria-hidden="true"></div>
+
+        <div class="intro__rays" aria-hidden="true"></div>
+
+        <div class="intro__content">
+            <p class="intro__sanskrit">॥ శ్రీ రామ జయ రామ జయ జయ రామ ॥</p>
+
+            <div class="intro__hero-image">
+                <div class="intro__hero-crop">
+                    <img src="rama.jpeg" alt="Sri Rama" />
+                </div>
+            </div>
+
+            <h1 class="intro__title">
+                <span data-i18n="intro.title">Sri Sita Rama Chandra Swamy Devasthanam</span>
+            </h1>
+            <p class="intro__sub">
+                <span data-i18n="intro.sub">Ramnagar 8<sup>th</sup> Line · Ongole</span>
+            </p>
+
+            <button class="intro__enter btn btn--primary" id="introEnter" type="button"
+                    onclick="(function(){var i=document.getElementById('intro');if(!i)return;i.style.transition='opacity 800ms ease';i.style.opacity='0';setTimeout(function(){i.style.display='none';document.body.classList.remove('intro-active');},800);})();">
+                <span data-i18n="intro.enter">Enter the Temple</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M13 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         FALLING PETALS (whole-page)
+         ============================================== -->
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    <!-- ============================================== -->
+    <!-- TOP STRIP                                      -->
+    <!-- ============================================== -->
+    <div class="top-strip">
+        <div class="container top-strip__inner">
+            <span class="top-strip__sanskrit">శ్రీ రామ జయ రామ జయ జయ రామ</span>
+            <span class="top-strip__divider">·</span>
+            <span class="top-strip__location" data-i18n="topstrip.location">Ramnagar 8<sup>th</sup> Line, Ongole, Andhra Pradesh</span>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- HEADER / NAV                                   -->
+    <!-- ============================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container site-header__inner">
+            <a href="#home" class="brand" aria-label="Sri Ramalayam Home">
+                <span class="brand__icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" width="44" height="44">
+                        <defs>
+                            <linearGradient id="gold" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#f6c453" />
+                                <stop offset="100%" stop-color="#b8860b" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M32 4 L36 12 L32 14 L28 12 Z" fill="url(#gold)"/>
+                        <rect x="30" y="14" width="4" height="6" fill="url(#gold)"/>
+                        <path d="M14 56 L14 30 L32 18 L50 30 L50 56 Z" fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M22 56 L22 38 Q32 30 42 38 L42 56" fill="none" stroke="url(#gold)" stroke-width="2"/>
+                        <line x1="14" y1="56" x2="50" y2="56" stroke="url(#gold)" stroke-width="2.5"/>
+                        <circle cx="32" cy="42" r="2" fill="url(#gold)"/>
+                    </svg>
+                </span>
+                <span class="brand__text">
+                    <span class="brand__name" data-i18n="brand.name">Sri Ramalayam</span>
+                    <span class="brand__sub" data-i18n="brand.sub">Ramnagar · Ongole</span>
+                </span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav">
+                <a href="#home" data-i18n="nav.home">Home</a>
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#darshan" data-i18n="nav.darshan">Darshan</a>
+                <a href="#sevas" data-i18n="nav.sevas">Sevas</a>
+                <a href="#festivals" data-i18n="nav.festivals">Festivals</a>
+                <a href="#stotras" class="nav-stotras" data-i18n="nav.stotras">Stotras</a>
+                <a href="#donate" class="nav-cta" data-i18n="nav.donate">Donate</a>
+
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button class="lang-switch__btn is-active" data-lang="en">EN</button>
+                    <button class="lang-switch__btn" data-lang="te">తె</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- HERO                                           -->
+    <!-- ============================================== -->
+    <section class="hero" id="home">
+        <div class="hero__bg" aria-hidden="true">
+            <div class="hero__pattern"></div>
+            <div class="hero__glow"></div>
+        </div>
+
+        <div class="container hero__inner">
+            <p class="hero__eyebrow">॥ ॐ శ్రీ రామాయ నమః ॥</p>
+            <h1 class="hero__title" data-i18n="hero.title">Sri Sita Rama Chandra<br/><span class="hero__title-accent">Swamy Devasthanam</span></h1>
+            <p class="hero__telugu" data-i18n="hero.subtitle">శ్రీ సీతా రామ చంద్ర స్వామి దేవస్థానం</p>
+            <p class="hero__lede" data-i18n="hero.lede">A sanctuary of devotion, dharma, and community at the heart of Ramnagar, Ongole. Step into the divine presence of Lord Rama, Mata Sita, Lakshmana, and Hanuman.</p>
+
+            <div class="hero__cta">
+                <a href="#darshan" class="btn btn--primary" data-i18n="hero.cta1">Today's Darshan</a>
+                <a href="#contact" class="btn btn--ghost" data-i18n="hero.cta2">Plan Your Visit</a>
+            </div>
+
+            <div class="hero__meta">
+                <div class="hero__meta-item">
+                    <span class="hero__meta-label" data-i18n="hero.openLabel">Open Today</span>
+                    <span class="hero__meta-value" id="todayHours">5:30 AM – 12:00 PM · 4:00 PM – 8:30 PM</span>
+                </div>
+            </div>
+
+            <!-- ===== Daily Panchangam Card ===== -->
+            <div class="panchangam" id="panchangam" role="region" aria-label="Today's Panchangam">
+                <div class="panchangam__header">
+                    <span class="panchangam__title" data-i18n="panchangam.title">Today's Panchangam</span>
+                    <span class="panchangam__date">
+                        <span id="panchangamDate">—</span>
+                        <span class="panchangam__tz" id="panchangamTz" data-i18n="panchangam.tz">IST</span>
+                    </span>
+                </div>
+                <div class="panchangam__grid">
+                    <div class="panchangam__cell">
+                        <span class="panchangam__label" data-i18n="panchangam.vaaram">Vaaram</span>
+                        <span class="panchangam__value" id="panVaaram">—</span>
+                    </div>
+                    <div class="panchangam__cell">
+                        <span class="panchangam__label" data-i18n="panchangam.tithi">Tithi</span>
+                        <span class="panchangam__value" id="panTithi">—</span>
+                    </div>
+                    <div class="panchangam__cell">
+                        <span class="panchangam__label" data-i18n="panchangam.nakshatra">Nakshatram</span>
+                        <span class="panchangam__value" id="panNakshatra">—</span>
+                    </div>
+                    <div class="panchangam__cell">
+                        <span class="panchangam__label" data-i18n="panchangam.paksha">Paksham</span>
+                        <span class="panchangam__value" id="panPaksha">—</span>
+                    </div>
+                </div>
+                <p class="panchangam__note" data-i18n="panchangam.note">Indian Standard Time · for precise muhurtam please consult a panchangam.</p>
+            </div>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+            <span></span>
+            <p data-i18n="hero.scroll">Scroll</p>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- ABOUT                                          -->
+    <!-- ============================================== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="about.eyebrow">About the Temple</p>
+                <h2 class="section__title" data-i18n="about.title">A Sacred Abode of <span>Sri Rama</span></h2>
+                <p class="section__lede" data-i18n="about.lede">Established for the spiritual upliftment of the Ramnagar community, our Ramalayam has been a beacon of devotion, dharma, and seva for generations of devotees in Ongole.</p>
+            </div>
+
+            <div class="about__grid">
+                <article class="about__card">
+                    <div class="about__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M12 2 L4 8 V20 H20 V8 Z"/>
+                            <path d="M9 20 V13 H15 V20"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="about.card1.title">Heritage</h3>
+                    <p data-i18n="about.card1.body">Built and nurtured by the devoted residents of Ramnagar, our temple stands as a testimony to faith, unity, and the timeless bond between guru and devotee.</p>
+                </article>
+
+                <article class="about__card">
+                    <div class="about__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 3 V21 M3 12 H21"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="about.card2.title">Deities</h3>
+                    <p data-i18n="about.card2.body">The sanctum houses the divine forms of <strong>Sri Rama, Mata Sita, Lakshmana Swamy</strong>, and <strong>Sri Anjaneya Swamy</strong> — radiant in eternal grace.</p>
+                </article>
+
+                <article class="about__card">
+                    <div class="about__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M12 21 C5 16 3 12 3 8 A5 5 0 0 1 12 6 A5 5 0 0 1 21 8 C21 12 19 16 12 21 Z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="about.card3.title">Seva &amp; Community</h3>
+                    <p data-i18n="about.card3.body">Beyond worship, the temple is the heart of Annadanam, Vedic learning, bhajan sandhyas, and youth programs that keep our culture vibrant and alive.</p>
+                </article>
+            </div>
+
+            <div class="about__shloka">
+                <p class="shloka">
+                    “रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः ।<br/>
+                    राजा सर्वस्य लोकस्य देवानामिव वासवः ॥”
+                </p>
+                <p class="shloka__meaning" data-i18n="about.shlokaMeaning"><em>“Rama is the embodiment of dharma — noble, truthful, and valiant; the king of all the worlds, like Indra among the gods.”</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- DARSHAN                                        -->
+    <!-- ============================================== -->
+    <section class="section darshan" id="darshan">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="darshan.eyebrow">Daily Schedule</p>
+                <h2 class="section__title" data-i18n="darshan.title">Darshan &amp; <span>Aarti Timings</span></h2>
+                <p class="section__lede" data-i18n="darshan.lede">The temple welcomes devotees throughout the day. Plan your visit around the sacred rituals to experience the temple at its most divine.</p>
+            </div>
+
+            <div class="darshan__grid">
+                <div class="darshan__card">
+                    <span class="darshan__time">05:30 AM</span>
+                    <h3 data-i18n="darshan.s1.title">Suprabhatam</h3>
+                    <p data-i18n="darshan.s1.body">Awakening of the Lord with sacred verses and the gentle ringing of bells.</p>
+                </div>
+                <div class="darshan__card">
+                    <span class="darshan__time">06:00 AM</span>
+                    <h3 data-i18n="darshan.s2.title">Abhishekam</h3>
+                    <p data-i18n="darshan.s2.body">Ritual bathing of the deities with milk, curd, honey, and pure water.</p>
+                </div>
+                <div class="darshan__card">
+                    <span class="darshan__time">07:30 AM</span>
+                    <h3 data-i18n="darshan.s3.title">Morning Aarti</h3>
+                    <p data-i18n="darshan.s3.body">Offering of camphor flame accompanied by Vedic chants and devotional bhajans.</p>
+                </div>
+                <div class="darshan__card">
+                    <span class="darshan__time">12:00 PM</span>
+                    <h3 data-i18n="darshan.s4.title">Madhyahna Naivedyam</h3>
+                    <p data-i18n="darshan.s4.body">Mid-day offering followed by temple closure for the Lord's rest.</p>
+                </div>
+                <div class="darshan__card">
+                    <span class="darshan__time">04:00 PM</span>
+                    <h3 data-i18n="darshan.s5.title">Sayam Darshan</h3>
+                    <p data-i18n="darshan.s5.body">Evening reopening — a peaceful time for personal prayer and sankalpa.</p>
+                </div>
+                <div class="darshan__card">
+                    <span class="darshan__time">07:00 PM</span>
+                    <h3 data-i18n="darshan.s6.title">Sandhya Aarti</h3>
+                    <p data-i18n="darshan.s6.body">The most auspicious aarti of the day, illuminating the sanctum with divine light.</p>
+                </div>
+            </div>
+
+            <div class="darshan__notice" data-i18n="darshan.notice"><strong>Note:</strong> Timings may vary on festival days, ekadashi, and special tithis. Please check the announcements section or call the temple office before visiting.</div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SEVAS                                          -->
+    <!-- ============================================== -->
+    <section class="section sevas" id="sevas">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="sevas.eyebrow">Devotional Services</p>
+                <h2 class="section__title" data-i18n="sevas.title">Sevas &amp; <span>Pooja Offerings</span></h2>
+                <p class="section__lede" data-i18n="sevas.lede">Participate in sacred rituals performed by our temple priests on your behalf. All sevas can be sponsored in person or arranged in advance through the temple office.</p>
+            </div>
+
+            <div class="sevas__list">
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s1.title">Nitya Archana</h3>
+                        <p data-i18n="sevas.s1.body">Daily personal name &amp; gotra archana to Sri Rama</p>
+                    </div>
+                    <div class="seva-item__price">₹ 101</div>
+                </div>
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s2.title">Kalyanotsavam</h3>
+                        <p data-i18n="sevas.s2.body">Celestial wedding ceremony of Sri Sita Rama</p>
+                    </div>
+                    <div class="seva-item__price">₹ 1,116</div>
+                </div>
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s3.title">Sahasranama Archana</h3>
+                        <p data-i18n="sevas.s3.body">Chanting of the 1,000 holy names of Lord Rama</p>
+                    </div>
+                    <div class="seva-item__price">₹ 251</div>
+                </div>
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s4.title">Hanuman Chalisa Parayanam</h3>
+                        <p data-i18n="sevas.s4.body">Recitation in honor of Sri Anjaneya Swamy</p>
+                    </div>
+                    <div class="seva-item__price">₹ 116</div>
+                </div>
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s5.title">Annaprasana &amp; Aksharabhyasam</h3>
+                        <p data-i18n="sevas.s5.body">Sacred rites of passage for children</p>
+                    </div>
+                    <div class="seva-item__price">₹ 501</div>
+                </div>
+                <div class="seva-item">
+                    <div class="seva-item__name">
+                        <h3 data-i18n="sevas.s6.title">Satyanarayana Vratam</h3>
+                        <p data-i18n="sevas.s6.body">Pooja for prosperity and family well-being</p>
+                    </div>
+                    <div class="seva-item__price">₹ 1,001</div>
+                </div>
+            </div>
+
+            <div class="sevas__cta">
+                <a href="#contact" class="btn btn--primary" data-i18n="sevas.cta">Book a Seva</a>
+                <span class="sevas__cta-note" data-i18n="sevas.note">Sponsorship includes prasadam &amp; sankalpam in your name.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- FESTIVALS                                      -->
+    <!-- ============================================== -->
+    <section class="section festivals" id="festivals">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="festivals.eyebrow">Sacred Calendar</p>
+                <h2 class="section__title" data-i18n="festivals.title">Festivals &amp; <span>Celebrations</span></h2>
+                <p class="section__lede" data-i18n="festivals.lede">Throughout the year, the temple comes alive with vibrant festivals, processions, and community gatherings — each a celebration of our timeless traditions.</p>
+            </div>
+
+            <div class="festivals__timeline">
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f1.month">Chaitra</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f1.title">Sri Rama Navami</h3>
+                        <p data-i18n="festivals.f1.body">The grand birthday of Lord Rama. Nine days of pravachanam, kalyanotsavam, and a magnificent rathotsavam through the streets of Ramnagar.</p>
+                    </div>
+                </article>
+
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f2.month">Vaishakha</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f2.title">Hanuman Jayanti</h3>
+                        <p data-i18n="festivals.f2.body">Special abhishekam, sundara kanda parayanam, and distribution of vada-mala prasadam to devotees.</p>
+                    </div>
+                </article>
+
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f3.month">Sravana</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f3.title">Varalakshmi Vratam</h3>
+                        <p data-i18n="festivals.f3.body">Auspicious pooja for married women, with collective sankalpam in the temple prakaram.</p>
+                    </div>
+                </article>
+
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f4.month">Aswayuja</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f4.title">Dussehra &amp; Vijayadasami</h3>
+                        <p data-i18n="festivals.f4.body">Ten nights of devi puja, Ramayana kathakalakshepam, and the symbolic burning of Ravana on the temple grounds.</p>
+                    </div>
+                </article>
+
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f5.month">Karthika</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f5.title">Karthika Deepotsavam</h3>
+                        <p data-i18n="festivals.f5.body">The temple is illuminated with thousands of oil lamps; deepa-aradhana every evening of the sacred month.</p>
+                    </div>
+                </article>
+
+                <article class="festival">
+                    <div class="festival__month" data-i18n="festivals.f6.month">Pushya</div>
+                    <div class="festival__body">
+                        <h3 data-i18n="festivals.f6.title">Vaikunta Ekadasi</h3>
+                        <p data-i18n="festivals.f6.body">Devotees pass through the Uttara Dwaram for blessings of moksha, followed by annadanam.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- GALLERY                                        -->
+    <!-- ============================================== -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="gallery.eyebrow">Glimpses</p>
+                <h2 class="section__title" data-i18n="gallery.title">Temple <span>Gallery</span></h2>
+                <p class="section__lede" data-i18n="gallery.lede">Moments of devotion and divine beauty captured during festivals and daily aratis.</p>
+            </div>
+
+            <div class="gallery__grid">
+                <figure class="gallery__item gallery__item--1">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g1" data-label="Gopuram at Dawn"></div>
+                </figure>
+                <figure class="gallery__item gallery__item--2">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g2" data-label="Garbha Gudi"></div>
+                </figure>
+                <figure class="gallery__item gallery__item--3">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g3" data-label="Sri Rama Navami"></div>
+                </figure>
+                <figure class="gallery__item gallery__item--4">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g4" data-label="Karthika Deepotsavam"></div>
+                </figure>
+                <figure class="gallery__item gallery__item--5">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g5" data-label="Annadanam Seva"></div>
+                </figure>
+                <figure class="gallery__item gallery__item--6">
+                    <div class="gallery__placeholder" data-i18n-attr="data-label" data-i18n="gallery.g6" data-label="Sandhya Aarti"></div>
+                </figure>
+            </div>
+
+            <p class="gallery__note" data-i18n="gallery.note">Replace the placeholder tiles in <code>styles.css</code> with your own temple photographs to bring this gallery to life.</p>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- DONATE                                         -->
+    <!-- ============================================== -->
+    <section class="section donate" id="donate">
+        <div class="container">
+            <div class="donate__inner">
+                <div class="donate__content">
+                    <p class="section__eyebrow section__eyebrow--light" data-i18n="donate.eyebrow">Support the Temple</p>
+                    <h2 class="section__title section__title--light" data-i18n="donate.title">Be a Part of <span>Seva</span></h2>
+                    <p class="donate__lede" data-i18n="donate.lede">Your contributions sustain the daily rituals, annadanam, festivals, and the upkeep of this sacred space. Every offering — large or small — is a step on the path of dharma.</p>
+
+                    <div class="donate__purposes">
+                        <div class="donate__purpose">
+                            <h4 data-i18n="donate.p1.title">Annadanam</h4>
+                            <p data-i18n="donate.p1.body">Sponsor a meal for devotees on a tithi of your choosing.</p>
+                        </div>
+                        <div class="donate__purpose">
+                            <h4 data-i18n="donate.p2.title">Nitya Pooja</h4>
+                            <p data-i18n="donate.p2.body">Support daily worship, flowers, and naivedyam.</p>
+                        </div>
+                        <div class="donate__purpose">
+                            <h4 data-i18n="donate.p3.title">Renovation Nidhi</h4>
+                            <p data-i18n="donate.p3.body">Contribute toward temple maintenance and expansion.</p>
+                        </div>
+                        <div class="donate__purpose">
+                            <h4 data-i18n="donate.p4.title">Veda Pathasala</h4>
+                            <p data-i18n="donate.p4.body">Help educate the next generation of priests &amp; scholars.</p>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn--primary" data-i18n="donate.cta">Contact Trustee</a>
+                </div>
+
+                <aside class="donate__card">
+                    <h3 data-i18n="donate.bankTitle">Bank Details</h3>
+                    <dl>
+                        <dt data-i18n="donate.acctName">Account Name</dt>
+                        <dd>Sri Ramalayam Devasthanam, Ramnagar</dd>
+                        <dt data-i18n="donate.acctNo">Account No.</dt>
+                        <dd>XXXXXXXXXXXX</dd>
+                        <dt data-i18n="donate.ifsc">IFSC</dt>
+                        <dd>XXXXXXXXXX</dd>
+                        <dt data-i18n="donate.upi">UPI</dt>
+                        <dd>ramalayam@upi</dd>
+                    </dl>
+                    <p class="donate__card-note" data-i18n="donate.bankNote">Please share your name, gotra, and tithi when transferring so we may include your sankalpam in the daily archana.</p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STOTRAS LIBRARY                                -->
+    <!-- ============================================== -->
+    <section class="section stotras-section" id="stotras">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="stotras.eyebrow">Sacred Library</p>
+                <h2 class="section__title" data-i18n="stotras.title">Stotras &amp; <span>Pārāyaṇam</span></h2>
+                <p class="section__lede" data-i18n="stotras.lede">A devotional library organized by deity — the complete Vishnu Sahasranama, Hanuman Chalisa, Aditya Hridayam, Sri Rama Raksha Stotram, daily prayers and more. Tap any title to read the full text in beautiful Telugu script with adjustable font size.</p>
+            </div>
+
+            <div class="stotras-grid" id="stotrasGrid">
+                <!-- cards rendered by script.js from stotras.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STOTRAS — FLOATING BUTTON + SIDE DRAWER        -->
+    <!-- ============================================== -->
+    <button class="stotra-fab" id="stotraFab" type="button" aria-label="Open Stotra library">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4z"/>
+            <path d="M4 4v14a2 2 0 0 0 2 2"/>
+            <line x1="8" y1="9" x2="16" y2="9"/>
+            <line x1="8" y1="13" x2="16" y2="13"/>
+        </svg>
+        <span class="stotra-fab__label" data-i18n="stotraFab.label">Stotras</span>
+    </button>
+
+    <!-- Side drawer -->
+    <aside class="stotra-drawer" id="stotraDrawer" aria-hidden="true" aria-label="Stotra library">
+        <div class="stotra-drawer__header">
+            <h3 data-i18n="stotraDrawer.title">Sacred Stotras</h3>
+            <button class="stotra-drawer__close" id="stotraDrawerClose" type="button" aria-label="Close">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <p class="stotra-drawer__sub" data-i18n="stotraDrawer.sub">Tap a stotra to open the full Telugu text.</p>
+        <ul class="stotra-drawer__list" id="stotraDrawerList"></ul>
+    </aside>
+    <div class="stotra-backdrop" id="stotraBackdrop" aria-hidden="true"></div>
+
+    <!-- Reader modal -->
+    <div class="stotra-reader" id="stotraReader" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="stotra-reader__inner">
+            <header class="stotra-reader__header">
+                <div class="stotra-reader__titles">
+                    <h2 class="stotra-reader__title" id="readerTitle">—</h2>
+                    <p class="stotra-reader__subtitle" id="readerSubtitle"></p>
+                </div>
+                <div class="stotra-reader__controls">
+                    <button class="stotra-reader__ctrl" id="readerSmaller" type="button" aria-label="Smaller text">A−</button>
+                    <button class="stotra-reader__ctrl" id="readerLarger" type="button" aria-label="Larger text">A+</button>
+                    <button class="stotra-reader__close" id="readerClose" type="button" aria-label="Close">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <div class="stotra-reader__body" id="readerBody"></div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- CONTACT                                        -->
+    <!-- ============================================== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section__head">
+                <p class="section__eyebrow" data-i18n="contact.eyebrow">Visit Us</p>
+                <h2 class="section__title" data-i18n="contact.title">Reach the <span>Temple</span></h2>
+                <p class="section__lede" data-i18n="contact.lede">Located in the peaceful Ramnagar colony, our doors are always open to the seeker.</p>
+            </div>
+
+            <div class="contact__grid">
+                <div class="contact__info">
+                    <div class="contact__block">
+                        <h3 data-i18n="contact.addrTitle">Address</h3>
+                        <p data-i18n="contact.addrBody">Sri Sita Rama Chandra Swamy Devasthanam<br/>F2PX+7XM, Ramnagar 8<sup>th</sup> Line<br/>Ongole, Prakasam District<br/>Andhra Pradesh — 523001, India</p>
+                    </div>
+
+                    <div class="contact__block">
+                        <h3 data-i18n="contact.hoursTitle">Office Hours</h3>
+                        <p data-i18n="contact.hoursBody">Monday – Sunday<br/>6:00 AM – 12:00 PM &amp; 4:00 PM – 8:30 PM</p>
+                    </div>
+
+                    <div class="contact__block">
+                        <h3 data-i18n="contact.phoneTitle">Phone</h3>
+                        <p>
+                            <a href="tel:+910000000000">+91 00000 00000</a><br/>
+                            <span class="contact__sub" data-i18n="contact.phoneSub">Temple Office &amp; Seva Bookings</span>
+                        </p>
+                    </div>
+
+                    <div class="contact__block">
+                        <h3 data-i18n="contact.emailTitle">Email</h3>
+                        <p>
+                            <a href="mailto:contact@ramalayam-ongole.org">contact@ramalayam-ongole.org</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact__map">
+                    <iframe
+                        title="Sri Ramalayam, Ramnagar, Ongole — Map"
+                        src="https://www.google.com/maps?q=F2PX%2B7XM+Ramnagar+Ongole+Andhra+Pradesh+523001&output=embed"
+                        width="100%"
+                        height="100%"
+                        style="border:0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                    ></iframe>
+                    <a class="contact__map-link" href="https://www.google.com/maps/search/?api=1&query=F2PX%2B7XM+Ramnagar+Ongole" target="_blank" rel="noopener">
+                        Open in Google Maps · F2PX+7XM
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- FOOTER                                         -->
+    <!-- ============================================== -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__brand">
+                <p class="site-footer__sanskrit">శ్రీ రామ జయ రామ జయ జయ రామ</p>
+                <p class="site-footer__name" data-i18n="footer.name">Sri Ramalayam · Ramnagar</p>
+                <p class="site-footer__addr" data-i18n="footer.addr">F2PX+7XM, Ramnagar 8<sup>th</sup> Line, Ongole, Andhra Pradesh</p>
+            </div>
+
+            <nav class="site-footer__nav" aria-label="Footer">
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#darshan" data-i18n="nav.darshan">Darshan</a>
+                <a href="#sevas" data-i18n="nav.sevas">Sevas</a>
+                <a href="#festivals" data-i18n="nav.festivals">Festivals</a>
+                <a href="#donate" data-i18n="nav.donate">Donate</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
+            </nav>
+
+            <p class="site-footer__copy" data-i18n="footer.copy">© <span id="year"></span> Sri Sita Rama Chandra Swamy Devasthanam, Ramnagar. Made with devotion.</p>
+        </div>
+    </footer>
+
+    <script src="stotras.js?v=3" defer></script>
+    <script src="script.js?v=8" defer></script>
+</body>
+</html>
