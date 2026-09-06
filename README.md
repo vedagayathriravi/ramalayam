@@ -8,7 +8,7 @@ Pure static HTML/CSS/JS — no build step, no frameworks.
 
 ## ✨ Features
 
-- **Welcome intro screen** with Telugu chant *"శ్రీ రామ జయ రామ జయ జయ రామ"* and an "Enter the Temple" button.
+- **Welcome intro screen** with a photo of Sri Rama, Sita, and Lakshmana (`rama.jpg`), Telugu chant *"శ్రీ రామ జయ రామ జయ జయ రామ"*, and an "Enter the Temple" button.
 - **Bilingual (English ⇄ Telugu)** language toggle in the header.
 - **Falling flower petals** continuously across the page.
 - **Daily Panchangam card** in the hero — auto-shows today's *Vaaram, Tithi, Nakshatram & Paksham* in Telugu, calculated from the moon's sidereal longitude (Lahiri ayanamsa).
@@ -34,6 +34,7 @@ Ramalayam/
 ├── styles.css      # Design tokens, layout, intro, petals, panchangam, stotras
 ├── script.js       # Translations, intro, petals, panchangam, stotra UI
 ├── stotras.js      # All Telugu stotra texts (easy to add more)
+├── rama.jpg        # Sri Rama, Sita & Lakshmana (intro screen)
 └── README.md       # This file
 ```
 

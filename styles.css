@@ -1284,7 +1284,7 @@ html[lang="te"] .donate__pending {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 18%;
+    object-position: center center;
     display: block;
 }
 @keyframes deityIn { to { opacity: 1; transform: none; } }
