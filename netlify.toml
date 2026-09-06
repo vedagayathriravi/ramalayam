@@ -1,0 +1,29 @@
+# Sri Ramalayam — static site (no build step)
+# Connect this repo at https://app.netlify.com → Add new site → Import from Git
+
+[build]
+  publish = "."
+  # Pure HTML/CSS/JS — nothing to compile
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = false
+  minify = false
+
+[build.processing.js]
+  bundle = false
+  minify = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Push site updates to GitHub (works when Terminal git shows Xcode errors)
+# Push site updates to GitHub → Netlify auto-deploys from main
 set -e
 GIT=/Library/Developer/CommandLineTools/usr/bin/git
 ROOT="$(cd "$(dirname "$0")" && pwd)"
@@ -13,4 +13,5 @@ if $GIT diff --cached --quiet; then
 fi
 $GIT commit -m "$MSG"
 $GIT push origin main
-echo "Done → https://vedagayathriravi.github.io/ramalayam/"
+echo "Pushed to GitHub — Netlify will deploy in ~1 minute."
+echo "Live site: https://srikodandaramaswami.netlify.app/ (after Netlify is connected)"

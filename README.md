@@ -93,7 +93,7 @@ The site pulls your latest uploads automatically via YouTube RSS — **no API ke
 
 ## Admin gallery (upload photos without coding)
 
-The site stays on free GitHub Pages, but **photo uploads need a small free backend**. We use [Supabase](https://supabase.com) (free tier):
+The site is hosted on **Netlify** (free). Photo uploads use a small free backend via [Supabase](https://supabase.com):
 
 | Role | What they do |
 |---|---|
@@ -108,8 +108,8 @@ The site stays on free GitHub Pages, but **photo uploads need a small free backe
 4. Go to **Project Settings → API** — copy:
    - Project URL → `config.js` → `supabaseUrl`
    - `anon` `public` key → `config.js` → `supabaseAnonKey`
-5. Push to GitHub (Pages redeploys automatically)
-6. Admin opens `https://vedagayathriravi.github.io/ramalayam/admin.html`, signs in, uploads photos
+5. Push to GitHub (Netlify redeploys automatically)
+6. Admin opens `https://srikodandaramaswami.netlify.app/admin.html`, signs in, uploads photos
 
 Uploads appear on the public gallery **immediately**. Max 5 MB per image (JPEG, PNG, WebP).
 
@@ -120,7 +120,9 @@ Uploads appear on the public gallery **immediately**. Max 5 MB per image (JPEG, 
 ## Git & pushing updates
 
 **Repo:** [github.com/vedagayathriravi/ramalayam](https://github.com/vedagayathriravi/ramalayam)  
-**Live site:** [vedagayathriravi.github.io/ramalayam](https://vedagayathriravi.github.io/ramalayam/)
+**Live site (Netlify):** [srikodandaramaswami.netlify.app](https://srikodandaramaswami.netlify.app/)
+
+GitHub stores the code. **Netlify** builds and hosts the public website (auto-deploy on every push to `main`).
 
 If Terminal shows an Xcode / `libxcodebuildLoader` error when you run `git`, fix it once:
 
@@ -143,39 +145,41 @@ Or manually:
 /Library/Developer/CommandLineTools/usr/bin/git push origin main
 ```
 
-GitHub Pages redeploys in about 1–2 minutes after each push.
+GitHub → Netlify redeploys in about 1 minute after each push.
 
 ---
 
-## 🌐 Deploying (free hosting)
+## 🌐 Hosting on Netlify (current setup)
 
-This site is fully static. Three excellent free options for public hosting:
+This site is pure static HTML/CSS/JS — **no build step**. Settings are in `netlify.toml`.
 
-### Option A · Cloudflare Pages (recommended for Indian audience)
+### First-time Netlify setup (~5 minutes)
 
-Cloudflare has edge servers in **Mumbai, Delhi, Hyderabad, Chennai, Bengaluru** — fastest for visitors in India.
+1. Sign up free at [app.netlify.com](https://app.netlify.com)
+2. Click **Add new site → Import an existing project**
+3. Choose **GitHub** → authorize → select **`vedagayathriravi/ramalayam`**
+4. Netlify reads `netlify.toml` automatically:
+   - **Branch:** `main`
+   - **Publish directory:** `.` (repo root)
+   - **Build command:** *(leave empty)*
+5. Click **Deploy site**
+6. Optional: **Site configuration → Site details → Change site name** → e.g. `srikodandaramaswami`  
+   Your URL becomes `https://srikodandaramaswami.netlify.app`
+7. Optional: add a custom domain (e.g. `sriramalayam.org`) under **Domain management**
 
-1. Push this repo to GitHub (`gh repo create ramalayam --public --source=. --push`).
-2. Go to <https://pages.cloudflare.com> → **Create a project** → **Connect to Git**.
-3. Select the repo. Build settings: leave **Framework preset = None**, **Build command = (empty)**, **Build output directory = /**.
-4. Click **Deploy**. You'll get `ramalayam.pages.dev` in ~30 seconds.
+After this, every `git push` to `main` updates the live site automatically.
 
-### Option B · Netlify Drop (easiest, no GitHub)
+> **Note:** GitHub is still used for code and the YouTube feed updater (`.github/workflows/youtube-feed.yml`). Only the **website hosting** moved from GitHub Pages to Netlify.
 
-1. Go to <https://app.netlify.com/drop>.
-2. Drag the entire `Ramalayam/` folder onto the page.
-3. You get a live `*.netlify.app` URL instantly.
-4. Sign up (free) to keep it permanent.
+### Quick deploy without Git (Netlify Drop)
 
-### Option C · GitHub Pages
+1. Go to [app.netlify.com/drop](https://app.netlify.com/drop)
+2. Drag the entire project folder onto the page
+3. Instant `*.netlify.app` URL — sign up to keep it permanent
 
-1. `gh repo create ramalayam --public --source=. --push`
-2. On GitHub: **Settings → Pages → Source = Deploy from branch → main → / (root)**.
-3. Live at `https://<your-username>.github.io/ramalayam/`.
+### Other hosts (optional)
 
-### Custom domain
-
-Once deployed, all three platforms support free custom domains. Buy a domain from **Cloudflare Registrar** (cheapest, no markup) or Namecheap, then add it in your hosting dashboard.
+Cloudflare Pages and GitHub Pages also work. See `netlify.toml` for the publish directory (`.`).
 
 ---
 
