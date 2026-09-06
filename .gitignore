@@ -40,3 +40,6 @@ yarn-error.log*
 # Docker
 postgres_data/
 redis_data/
+
+# Local Netlify folder
+.netlify
