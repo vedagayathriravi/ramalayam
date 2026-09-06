@@ -11,8 +11,8 @@
        Find Channel ID: YouTube Studio → Settings → Advanced settings
        ========================================================= */
     const YOUTUBE_CONFIG = {
-        channelId: '',                      // e.g. 'UCxxxxxxxxxxxxxxxxxx'
-        channelHandle: 'SriKodandaRamaswamiAlayam',  // https://youtube.com/@SriKodandaRamaswamiAlayam
+        channelId: 'UChuGa1278z9uRda_oRk17RQ',   // @SriKodandaRamaswamiAlayam
+        channelHandle: 'SriKodandaRamaswamiAlayam',
         refreshMinutes: 20,
         maxVideos: 12,
         maxShorts: 10
