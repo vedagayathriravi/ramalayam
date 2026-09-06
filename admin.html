@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Gallery Admin · Sri Ramalayam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="stylesheet" href="admin.css?v=1" />
+</head>
+<body class="admin-page">
+
+    <header class="admin-header">
+        <div class="admin-header__inner">
+            <a class="admin-header__brand" href="index.html">← Sri Ramalayam</a>
+            <h1 class="admin-header__title">Gallery Admin</h1>
+            <button class="admin-header__logout" id="adminLogout" type="button" hidden>Sign out</button>
+        </div>
+    </header>
+
+    <main class="admin-main container">
+
+        <div class="admin-alert" id="adminAlert" hidden></div>
+
+        <!-- Login -->
+        <section class="admin-card" id="adminLoginSection">
+            <h2>Sign in</h2>
+            <p class="admin-card__sub">Temple staff only. Use the email and password created in Supabase.</p>
+            <form class="admin-form" id="adminLoginForm">
+                <label class="admin-field">
+                    <span>Email</span>
+                    <input type="email" id="adminEmail" required autocomplete="username" />
+                </label>
+                <label class="admin-field">
+                    <span>Password</span>
+                    <input type="password" id="adminPassword" required autocomplete="current-password" />
+                </label>
+                <button class="btn btn--primary admin-submit" type="submit">Sign in</button>
+            </form>
+        </section>
+
+        <!-- Upload -->
+        <section class="admin-card" id="adminUploadSection" hidden>
+            <h2>Upload photo</h2>
+            <p class="admin-card__sub">New uploads appear on the public gallery immediately.</p>
+            <form class="admin-form" id="adminUploadForm">
+                <label class="admin-field">
+                    <span>Photo</span>
+                    <input type="file" id="adminFile" accept="image/jpeg,image/png,image/webp,image/gif" required />
+                </label>
+                <label class="admin-field">
+                    <span>Caption (English)</span>
+                    <input type="text" id="adminCaptionEn" placeholder="e.g. Sandhya Aarti" maxlength="120" />
+                </label>
+                <label class="admin-field">
+                    <span>Caption (Telugu)</span>
+                    <input type="text" id="adminCaptionTe" placeholder="e.g. సంధ్యా హారతి" maxlength="120" />
+                </label>
+                <button class="btn btn--primary admin-submit" type="submit" id="adminUploadBtn">Upload to gallery</button>
+            </form>
+        </section>
+
+        <!-- Manage -->
+        <section class="admin-card" id="adminManageSection" hidden>
+            <div class="admin-manage-head">
+                <h2>Current photos</h2>
+                <span class="admin-count" id="adminPhotoCount">0</span>
+            </div>
+            <div class="admin-gallery-list" id="adminGalleryList"></div>
+        </section>
+
+        <!-- Setup help when Supabase not configured -->
+        <section class="admin-card admin-card--help" id="adminSetupHelp" hidden>
+            <h2>Setup required</h2>
+            <p>Add your Supabase URL and anon key to <code>config.js</code>, then run <code>supabase-setup.sql</code> in the Supabase SQL editor. See README for step-by-step instructions.</p>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js?v=2"></script>
+    <script src="admin.js?v=1"></script>
+</body>
+</html>
