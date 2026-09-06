@@ -157,7 +157,7 @@
             'videos.shortBadge': 'Short',
             'videos.new': 'కొత్త',
             'videos.loading': 'తాజా వీడియోలు లోడ్ అవుతున్నాయి…',
-            'videos.error': 'YouTube ఫీడ్ లోడ్ కాలేదు. script.js లో channel ID చూడండి.',
+            'videos.error': 'వీడియోలు లోడ్ కాలేదు. కొద్ది సమయం తర్వాత మళ్లీ ప్రయత్నించండి.',
             'videos.empty': 'ఇంకా వీడియోలు లేవు.',
             'videos.subscribe': 'YouTube లో చూడండి',
             'videos.updated': 'చివరిగా నవీకరించబడింది',
