@@ -27,6 +27,14 @@ create policy "gallery_admin_insert"
     to authenticated
     with check (true);
 
+-- Only logged-in admin can edit captions / replace image URL
+create policy "gallery_admin_update"
+    on public.gallery_items
+    for update
+    to authenticated
+    using (true)
+    with check (true);
+
 -- Only logged-in admin can remove photos
 create policy "gallery_admin_delete"
     on public.gallery_items
@@ -52,6 +60,13 @@ create policy "gallery_storage_admin_insert"
     to authenticated
     with check (bucket_id = 'gallery');
 
+-- Admin replace / overwrite files
+create policy "gallery_storage_admin_update"
+    on storage.objects
+    for update
+    to authenticated
+    using (bucket_id = 'gallery');
+
 -- Admin delete files
 create policy "gallery_storage_admin_delete"
     on storage.objects
@@ -63,5 +78,19 @@ create policy "gallery_storage_admin_delete"
 -- After running this SQL:
 -- 1. Authentication → Users → Add user (email + password for priest/admin)
 -- 2. Project Settings → API → copy URL and anon public key into config.js
--- 3. Open yoursite/admin.html and sign in to upload photos
+-- 3. Open yoursite/admin.html and sign in to upload, edit, or delete photos
+--
+-- If you already ran an older version of this script, run only the
+-- gallery_admin_update and gallery_storage_admin_update policies above.
+--
+-- ---- One-time migration (edit support for existing projects) ----
+-- drop policy if exists "gallery_admin_update" on public.gallery_items;
+-- create policy "gallery_admin_update"
+--     on public.gallery_items for update to authenticated
+--     using (true) with check (true);
+--
+-- drop policy if exists "gallery_storage_admin_update" on storage.objects;
+-- create policy "gallery_storage_admin_update"
+--     on storage.objects for update to authenticated
+--     using (bucket_id = 'gallery');
 -- =============================================================

@@ -15,6 +15,7 @@
     const uploadBtn = document.getElementById('adminUploadBtn');
 
     let supabase = null;
+    let editingId = null;
 
     function showAlert(msg, type) {
         if (!alertEl) return;
@@ -82,26 +83,145 @@
             return;
         }
 
-        galleryList.innerHTML = data.map((item) => `
+        galleryList.innerHTML = data.map((item) => {
+            const isEditing = editingId === item.id;
+            if (isEditing) {
+                return `
+            <div class="admin-photo-row admin-photo-row--editing" data-id="${item.id}">
+                <img class="admin-photo-row__thumb" src="${escapeAttr(item.image_url)}" alt="" loading="lazy" />
+                <form class="admin-photo-edit" data-id="${item.id}" data-url="${escapeAttr(item.image_url)}">
+                    <label class="admin-field">
+                        <span>Caption (English)</span>
+                        <input type="text" name="caption_en" value="${escapeAttr(item.caption_en || '')}" maxlength="120" />
+                    </label>
+                    <label class="admin-field">
+                        <span>Caption (Telugu)</span>
+                        <input type="text" name="caption_te" value="${escapeAttr(item.caption_te || '')}" maxlength="120" />
+                    </label>
+                    <label class="admin-field">
+                        <span>Replace photo (optional)</span>
+                        <input type="file" name="replace_file" accept="image/jpeg,image/png,image/webp,image/gif" />
+                    </label>
+                    <div class="admin-photo-row__edit-actions">
+                        <button class="btn btn--primary admin-photo-row__save" type="submit">Save changes</button>
+                        <button class="admin-photo-row__cancel" type="button" data-id="${item.id}">Cancel</button>
+                    </div>
+                </form>
+            </div>`;
+            }
+
+            return `
             <div class="admin-photo-row" data-id="${item.id}">
                 <img class="admin-photo-row__thumb" src="${escapeAttr(item.image_url)}" alt="" loading="lazy" />
                 <div class="admin-photo-row__meta">
                     <span class="admin-photo-row__title">${escapeHtml(item.caption_te || item.caption_en || 'Temple photo')}</span>
+                    ${item.caption_en && item.caption_te ? `<span class="admin-photo-row__subtitle">${escapeHtml(item.caption_en)}</span>` : ''}
                     <span class="admin-photo-row__date">${escapeHtml(formatDate(item.created_at))}</span>
                 </div>
-                <button class="admin-photo-row__delete" type="button" data-id="${item.id}" data-url="${escapeAttr(item.image_url)}">Remove</button>
-            </div>
-        `).join('');
+                <div class="admin-photo-row__actions">
+                    <button class="admin-photo-row__edit" type="button" data-id="${item.id}">Edit</button>
+                    <button class="admin-photo-row__delete" type="button" data-id="${item.id}" data-url="${escapeAttr(item.image_url)}">Delete</button>
+                </div>
+            </div>`;
+        }).join('');
+
+        galleryList.querySelectorAll('.admin-photo-row__edit').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                editingId = btn.getAttribute('data-id');
+                loadAdminGallery();
+            });
+        });
+
+        galleryList.querySelectorAll('.admin-photo-row__cancel').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                editingId = null;
+                loadAdminGallery();
+            });
+        });
+
+        galleryList.querySelectorAll('.admin-photo-edit').forEach((form) => {
+            form.addEventListener('submit', (e) => savePhotoEdit(e, form));
+        });
 
         galleryList.querySelectorAll('.admin-photo-row__delete').forEach((btn) => {
             btn.addEventListener('click', () => deletePhoto(btn));
         });
     }
 
+    async function savePhotoEdit(e, form) {
+        e.preventDefault();
+        if (!supabase) return;
+
+        const id = form.getAttribute('data-id');
+        const oldUrl = form.getAttribute('data-url');
+        if (!id) return;
+
+        const captionEn = form.querySelector('[name="caption_en"]').value.trim();
+        const captionTe = form.querySelector('[name="caption_te"]').value.trim();
+        const fileInput = form.querySelector('[name="replace_file"]');
+        const file = fileInput?.files?.[0];
+        const saveBtn = form.querySelector('.admin-photo-row__save');
+
+        if (file && file.size > 5 * 1024 * 1024) {
+            showAlert('Replacement image must be under 5 MB.');
+            return;
+        }
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving…';
+
+        let imageUrl = oldUrl;
+        const oldPath = storagePathFromUrl(oldUrl);
+
+        if (file) {
+            const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const path = Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '.' + ext;
+
+            const { error: upErr } = await supabase.storage
+                .from('gallery')
+                .upload(path, file, { cacheControl: '3600', upsert: false });
+
+            if (upErr) {
+                showAlert(upErr.message);
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Save changes';
+                return;
+            }
+
+            const { data: pub } = supabase.storage.from('gallery').getPublicUrl(path);
+            imageUrl = pub.publicUrl;
+
+            if (oldPath) {
+                await supabase.storage.from('gallery').remove([oldPath]);
+            }
+        }
+
+        const { error } = await supabase
+            .from('gallery_items')
+            .update({
+                caption_en: captionEn,
+                caption_te: captionTe,
+                image_url: imageUrl
+            })
+            .eq('id', id);
+
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save changes';
+
+        if (error) {
+            showAlert(error.message);
+            return;
+        }
+
+        editingId = null;
+        showAlert('Photo updated.', 'success');
+        loadAdminGallery();
+    }
+
     async function deletePhoto(btn) {
         const id = btn.getAttribute('data-id');
         const url = btn.getAttribute('data-url');
-        if (!id || !confirm('Remove this photo from the public gallery?')) return;
+        if (!id || !confirm('Delete this photo from the public gallery?')) return;
 
         btn.disabled = true;
         const path = storagePathFromUrl(url);
@@ -114,7 +234,7 @@
             btn.disabled = false;
             return;
         }
-        showAlert('Photo removed.', 'success');
+        showAlert('Photo deleted.', 'success');
         loadAdminGallery();
     }
 
