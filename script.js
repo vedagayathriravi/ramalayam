@@ -182,12 +182,15 @@
             'videos.error': 'వీడియోలు లోడ్ కాలేదు. కొద్ది సమయం తర్వాత మళ్లీ ప్రయత్నించండి.',
             'videos.empty': 'ఇంకా వీడియోలు లేవు.',
             'videos.subscribe': 'YouTube లో చూడండి',
+            'videos.channelTitle': 'మా YouTube ఛానల్',
+            'videos.channelSub': '@SriKodandaRamaswamiAlayam — ఉత్సవాలు, హారతులు &amp; Shorts',
+            'videos.channelCta': 'ఛానల్‌కు వెళ్లండి →',
             'videos.updated': 'చివరిగా నవీకరించబడింది',
             'videos.liveNote': 'ప్రతి 20 నిమిషాలకు స్వయంచాలక నవీకరణ',
 
             'donate.eyebrow': 'ఆలయ సహాయం',
             'donate.title': 'సేవలో <span>భాగస్వామి</span> కండి',
-            'donate.lede': 'మీ సహకారం దైనందిన పూజ, అన్నదానం, పండుగలు, ఆలయ నిర్వహణకు తోడ్పడుతుంది. మా ఆలయ బ్యాంక్ ఖాతా తెరవబడిన తర్వాత విరాళం వివరాలు ఇక్కడ జోడించబడతాయి.',
+            'donate.lede': 'మీ సహకారం దైనందిన పూజ, అన్నదానం, పండుగలు, ఆలయ నిర్వహణకు తోడ్పడుతుంది. విరాళం ఇవ్వాలనుకుంటే మా ఆలయ కమిటీని సంప్రదించండి — బ్యాంక్ ఖాతా తెరవబడిన తర్వాత ఆన్‌లైన్ వివరాలు ఇక్కడ జోడించబడతాయి.',
             'donate.p1.title': 'అన్నదానం',
             'donate.p1.body': 'మీ ఎంచుకున్న తిథిలో భక్తులకు భోజనం స్పాన్సర్ చేయండి.',
             'donate.p2.title': 'నిత్య పూజ',
@@ -196,18 +199,18 @@
             'donate.p3.body': 'ఆలయ నిర్వహణ మరియు విస్తరణకు సహకారం.',
             'donate.p4.title': 'వేద పాఠశాల',
             'donate.p4.body': 'తదుపరి తరం పూజారులు &amp; పండితుల విద్యాభ్యాసానికి సహాయం.',
-            'donate.cta': 'ధర్మకర్తను సంప్రదించండి',
+            'donate.cta': 'కమిటీని సంప్రదించండి',
             'donate.bankTitle': 'విరాళాలు',
-            'donate.pending': 'మా ఆలయ బ్యాంక్ ఖాతా తెరవబడుతోంది. విరాళం వివరాలు, దాన పెట్టె త్వరలో ఇక్కడ జోడించబడతాయి. మీ ఓపిక, భక్తికి ధన్యవాదాలు.',
+            'donate.pending': 'మా ఆలయ బ్యాంక్ ఖాతా తెరవబడుతోంది. అప్పటివరకు విరాళం ఇవ్వాలనుకుంటే, ఫోన్ లేదా ఇమెయిల్ ద్వారా కమిటీని సంప్రదించండి — మార్గదర్శనం చేస్తాము.',
             'donate.acctName': 'ఖాతా పేరు',
             'donate.acctNo': 'ఖాతా సంఖ్య',
             'donate.ifsc': 'IFSC',
             'donate.upi': 'UPI',
-            'donate.bankNote': 'అప్పటివరకు, విరాళం ఇవ్వాలనుకుంటే ఆలయ కార్యాలయాన్ని సంప్రదించండి.',
+            'donate.bankNote': 'ఆలయానికి సహాయం చేయాలనుకుంటున్నారా? కమిటీని సంప్రదించండి — చిన్నది లేదా పెద్దది, అందరికి స్వాగతం.',
 
             'contact.eyebrow': 'మమ్మల్ని సందర్శించండి',
             'contact.title': 'ఆలయానికి <span>చేరుకోండి</span>',
-            'contact.lede': 'ప్రశాంత రామనగర్‌లో మా ఆలయ ద్వారాలు అందరు భక్తులకు తెరిచి ఉంటాయి. శ్రీ రామ, శ్రీ సీత, శ్రీ హనుమాన్ పూజల కోసం పూజారి లేదా కమిటీని ఫోన్ లేదా ఇమెయిల్ ద్వారా సంప్రదించండి.',
+            'contact.lede': 'ప్రశాంత రామనగర్‌లో మా ఆలయ ద్వారాలు అందరు భక్తులకు తెరిచి ఉంటాయి. పూజలు, విరాళాలు లేదా ఇతర వివరాలు కోసం పూజారి లేదా కమిటీని ఫోన్ లేదా ఇమెయిల్ ద్వారా సంప్రదించండి.',
             'contact.addrTitle': 'చిరునామా',
             'contact.addrBody': 'శ్రీ సీతా రామ చంద్ర స్వామి దేవస్థానం<br/>F2PX+7XM, రామనగర్ 8<sup>వ</sup> లైన్<br/>ఒంగోలు, ప్రకాశం జిల్లా<br/>ఆంధ్రప్రదేశ్ — 523001, భారత్',
             'contact.hoursTitle': 'ఆలయ సమయాలు',
@@ -215,7 +218,10 @@
             'contact.phoneTitle': 'ఫోన్',
             'contact.phoneSub': 'ఆలయ కార్యాలయం',
             'contact.emailTitle': 'ఇమెయిల్',
-            'contact.emailSub': 'పూజారి &amp; కమిటీ · పూజ వివరాలకు',
+            'contact.emailSub': 'పూజారి &amp; కమిటీ · పూజ &amp; విరాళ వివరాములకు',
+            'contact.youtubeTitle': 'YouTube',
+            'contact.youtubeSub': 'మా ఛానల్‌లో ఉత్సవాలు, హారతులు &amp; Shorts',
+            'footer.youtube': 'YouTube',
 
             'footer.name': 'శ్రీ రామాలయం · రామనగర్',
             'footer.addr': 'F2PX+7XM, రామనగర్ 8<sup>వ</sup> లైన్, ఒంగోలు, ఆంధ్రప్రదేశ్',
@@ -1154,11 +1160,13 @@
     }
 
     function ytUpdateChannelLink(channelId) {
-        if (!ytChannelLink) return;
         const handle = YOUTUBE_CONFIG.channelHandle;
-        ytChannelLink.href = handle
+        const href = handle
             ? 'https://www.youtube.com/@' + handle.replace(/^@/, '')
             : 'https://www.youtube.com/channel/' + channelId;
+        if (ytChannelLink) ytChannelLink.href = href;
+        const ytChannelBar = document.getElementById('youtubeChannelBar');
+        if (ytChannelBar) ytChannelBar.href = href;
     }
 
     function ytRenderFeed(items) {
