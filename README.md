@@ -117,6 +117,36 @@ Uploads appear on the public gallery **immediately**. Max 5 MB per image (JPEG, 
 
 ---
 
+## Git & pushing updates
+
+**Repo:** [github.com/vedagayathriravi/ramalayam](https://github.com/vedagayathriravi/ramalayam)  
+**Live site:** [vedagayathriravi.github.io/ramalayam](https://vedagayathriravi.github.io/ramalayam/)
+
+If Terminal shows an Xcode / `libxcodebuildLoader` error when you run `git`, fix it once:
+
+```bash
+sudo xcode-select -s /Library/Developer/CommandLineTools
+```
+
+Then push changes from the project folder:
+
+```bash
+cd ~/Desktop/Ramalayam/Ramalayam
+./push-to-github.sh "Describe your change"
+```
+
+Or manually:
+
+```bash
+/Library/Developer/CommandLineTools/usr/bin/git add .
+/Library/Developer/CommandLineTools/usr/bin/git commit -m "Your message"
+/Library/Developer/CommandLineTools/usr/bin/git push origin main
+```
+
+GitHub Pages redeploys in about 1–2 minutes after each push.
+
+---
+
 ## 🌐 Deploying (free hosting)
 
 This site is fully static. Three excellent free options for public hosting:
