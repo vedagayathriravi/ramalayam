@@ -1215,6 +1215,22 @@
         });
     }
 
+    async function ytLoadFeedItems(channelId) {
+        /* Primary: same-origin JSON (refreshed by GitHub Actions — no CORS issues) */
+        try {
+            const res = await fetch('youtube-feed.json?ts=' + Date.now(), { cache: 'no-store' });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.items && data.items.length) return data.items;
+            }
+        } catch (_) { /* fall through */ }
+
+        /* Fallback: RSS via proxy (often blocked in browsers) */
+        const feedUrl = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + channelId;
+        const xml = await ytFetchText(feedUrl);
+        return ytParseFeed(xml);
+    }
+
     async function ytRefresh() {
         if (!ytStatusEl) return;
         try {
@@ -1227,13 +1243,11 @@
             const channelId = await ytResolveChannelId();
             ytUpdateChannelLink(channelId);
 
-            const feedUrl = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + channelId;
-            const xml = await ytFetchText(feedUrl);
-            const items = ytParseFeed(xml);
+            const items = await ytLoadFeedItems(channelId);
             ytRenderFeed(items);
         } catch (err) {
             console.warn('YouTube feed error:', err);
-            ytSetStatus(ytLabel('videos.error', 'Could not load YouTube feed. Please set channelId in script.js.'));
+            ytSetStatus(ytLabel('videos.error', 'Could not load videos. Please try again later.'));
             ytStatusEl.hidden = false;
         }
     }
